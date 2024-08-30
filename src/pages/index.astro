@@ -1,0 +1,30 @@
+---
+/*title: Welcome to Starlight
+description: Get started building your docs site with Starlight.
+template: splash
+hero:
+  tagline: Congrats on setting up a new Starlight project!
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Example Guide
+      link: /guides/example/
+      icon: right-arrow
+    - text: Read the Starlight docs
+      link: https://starlight.astro.build
+      icon: external
+      variant: minimal
+*/
+import Description from '../components/home/description.astro'
+import Header from '../components/home/header.astro'
+import Features from '../components/home/features.astro'
+import CTA from '../components/home/callToAction.astro'
+import Layout from '../layouts/base.astro'
+---
+
+<Layout>
+	<Header/>
+	<Description/>
+	<Features/>
+	<CTA/>
+</Layout>

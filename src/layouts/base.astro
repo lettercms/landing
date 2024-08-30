@@ -1,0 +1,17 @@
+---
+import Footer from '../components/footer.astro';
+import Nav from '../components/nav.astro';
+//const { title } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<BaseHead title={title}/>-->
+  </head>
+  <body class='m-0 p-0 bg-main-500'>
+    <Nav/>
+    <slot /> <!-- your content is injected here -->
+    <Footer/>
+  </body>
+</html>

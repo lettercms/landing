@@ -1,0 +1,133 @@
+---
+
+/*
+'use client'
+
+import Link from 'next/link';
+import logo from '@/assets/lettercms-logo.svg'
+import {useRouter} from 'next/navigation';
+import {useState, useEffect, useRef} from 'react';
+import Button from '@/components/button';
+import {FaBars, FaTimes, FaGithub, FaSearch} from 'react-icons/fa';
+
+export default function Nav () {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
+  
+  const prevScrollY = useRef(0);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (prevScrollY.current  > 200 && !isOpen) {
+        setOpen(true);
+      }
+      if (prevScrollY.current < 200 && isOpen) {
+        setOpen(false);
+      }
+
+      prevScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isOpen]);*/
+
+---
+<nav class='z-20 left-0 top-0 fixed w-full'>
+  <div class="flex justify-between items-center transition-all duration-300 linear bg-white p-4" id='navbar'>
+    <a href='/'>
+      <!--<img src={logo.src} alt="LetterCMS Logo White" class={isOpen ? 'h-8' : 'h-12'}/>-->
+      <img src='/lettercms-logo.svg' alt="LetterCMS Logo White" class='h-12' id='navbar-image'/>
+    </a>
+    <!--<button onClick={() => setMobileOpen(!mobileOpen)} class="z-20" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">-->
+    <button class="z-20 cursor-pointer"  id='nav-button'>
+      hola
+      <!--{
+        mobileOpen
+          ? <FaTimes height='28' fill='#5f4dee'/>
+          : <FaBars height='28' fill='#5f4dee'/>
+      }-->
+    </button>
+  </div>
+  <div id='sidenav' class='fixed transition-all duration-300 ease w-full h-full bg-white top-0 flex flex-col justify-center items-center text-main-500 -left-full'>
+    <img src='/lettercms-logo.svg' alt="LetterCMS Logo White" class='h-12 mb-8'/>
+    <div class='flex flex-col text-xl items-center'>
+      <span class='my-4'>
+        <a href='/'>
+          Inicio
+        </a>
+      </span>
+      <span class='my-4'>
+        <a href='/blog'>
+          Docs
+        </a>
+      </span>
+    </div>
+    <div class='flex my-4 w-32 justify-between'>
+      <span>
+        <a href='/blog/search'>
+          <img width='1' height='1' src='/pixel.png' alt='LetterCMS Search'/>
+          <!--<FaSearch width='28' height='28' fill='#5f4dee'/>-->
+        </a>
+      </span>
+      <span>
+        <a target='_blank' href='https://github.com/lettercms/lettercms'>
+          <img width='1' height='1' src='/pixel.png' alt='LetterCMS Github'/>
+          <!--<FaGithub width='32' height='32' fill='#5f4dee'/>-->
+        </a>
+      </span>
+    </div>
+    <span class='my-4'>
+      <a class='no-underline border border-main-500 text-main-500 rounded-full py-3 px-6' href='/docs'>
+        LOGIN
+      </a>
+    </span>
+  </div>
+</nav>
+<div class='fixed bg-white w-full text-center bottom-0 py-2 px-1 text-sm z-10'>
+  <span>Project still in development. You can collaborate on <a class='text-main-500' target='_blank' href='https://github.com/lettercms/lettercms' rel="noreferrer">GitHub</a> or support us on <a class='text-main-500' target='_blank' href='https://opencollective.com/lettercms' rel="noreferrer">Open Collective</a></span>
+</div>
+
+<script>
+  let isOpen = false;
+
+  const navbar = document.getElementById('navbar') as HTMLElement;
+  const sidenav = document.getElementById('sidenav') as HTMLElement;
+  const navbarImg = document.getElementById('navbar-image')  as HTMLImageElement;
+  const navButton = document.getElementById('nav-button') as HTMLButtonElement;
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY  > 200 && !isOpen) {
+      navbar.style.padding = '8px';
+      navbarImg.style.height = '40px';
+
+      isOpen = true;
+    }
+
+    if (currentScrollY < 200 && isOpen) {
+      navbar.style.padding = '16px';
+      navbarImg.style.height = '56px';
+
+      isOpen = false;
+    }
+  };
+
+  const toggleSideNav = () => {
+    const actualPosition = sidenav.style.left;
+    
+    if (actualPosition !== '0px') {
+      sidenav.style.left = '0px'
+    } else {
+      sidenav.style.left = '-100%';
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  navButton.addEventListener('click', toggleSideNav, false);
+</script>

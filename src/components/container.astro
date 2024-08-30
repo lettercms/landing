@@ -1,0 +1,14 @@
+---
+import type { Props } from 'astro'
+
+interface ContainerProps extends Props {
+    className?: string
+}
+
+const props: ContainerProps = Astro.props
+
+---
+
+<div class={`w-11/12 rounded-2xl py-12 px-4 my-4 ${props.className || props.class}`}>
+      <slot/>
+</div>
