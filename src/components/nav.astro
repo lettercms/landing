@@ -1,41 +1,5 @@
 ---
-
-/*
-'use client'
-
-import Link from 'next/link';
-import logo from '@/assets/lettercms-logo.svg'
-import {useRouter} from 'next/navigation';
-import {useState, useEffect, useRef} from 'react';
-import Button from '@/components/button';
-import {FaBars, FaTimes, FaGithub, FaSearch} from 'react-icons/fa';
-
-export default function Nav () {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [isOpen, setOpen] = useState(false);
-  
-  const prevScrollY = useRef(0);
-
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (prevScrollY.current  > 200 && !isOpen) {
-        setOpen(true);
-      }
-      if (prevScrollY.current < 200 && isOpen) {
-        setOpen(false);
-      }
-
-      prevScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isOpen]);*/
-
+import MenuIco from '../assets/menu.svg'
 ---
 <nav class='z-20 left-0 top-0 fixed w-full'>
   <div class="flex justify-between items-center transition-all duration-300 linear bg-white p-4" id='navbar'>
@@ -44,8 +8,8 @@ export default function Nav () {
       <img src='/lettercms-logo.svg' alt="LetterCMS Logo White" class='h-12' id='navbar-image'/>
     </a>
     <!--<button onClick={() => setMobileOpen(!mobileOpen)} class="z-20" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">-->
-    <button class="z-20 cursor-pointer"  id='nav-button'>
-      hola
+    <button class="z-20 cursor-pointer bg-white"  id='nav-button'>
+      <img class='w-8 h-8'  {...MenuIco}/>
       <!--{
         mobileOpen
           ? <FaTimes height='28' fill='#5f4dee'/>
@@ -57,29 +21,29 @@ export default function Nav () {
     <img src='/lettercms-logo.svg' alt="LetterCMS Logo White" class='h-12 mb-8'/>
     <div class='flex flex-col text-xl items-center'>
       <span class='my-4'>
-        <a href='/'>
+        <a class='no-underline' href='/'>
           Inicio
         </a>
       </span>
       <span class='my-4'>
-        <a href='/blog'>
+        <a class='no-underline' href='/blog'>
           Docs
         </a>
       </span>
     </div>
     <div class='flex my-4 w-32 justify-between'>
-      <span>
+      <!--<span>
         <a href='/blog/search'>
           <img width='1' height='1' src='/pixel.png' alt='LetterCMS Search'/>
-          <!--<FaSearch width='28' height='28' fill='#5f4dee'/>-->
+          <FaSearch width='28' height='28' fill='#5f4dee'/>
         </a>
       </span>
       <span>
         <a target='_blank' href='https://github.com/lettercms/lettercms'>
           <img width='1' height='1' src='/pixel.png' alt='LetterCMS Github'/>
-          <!--<FaGithub width='32' height='32' fill='#5f4dee'/>-->
+          <FaGithub width='32' height='32' fill='#5f4dee'/>
         </a>
-      </span>
+      </span>-->
     </div>
     <span class='my-4'>
       <a class='no-underline border border-main-500 text-main-500 rounded-full py-3 px-6' href='/docs'>
